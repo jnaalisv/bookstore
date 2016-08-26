@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.inject.Inject;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -33,5 +34,14 @@ public class BookService {
     @Transactional
     public List<Book> loadAll() {
         return bookRepository.getAll();
+    }
+
+    @Transactional
+    public void delete(long bookID) {
+        Book book = bookRepository
+                .get(bookID)
+                .orElseThrow(() -> NotFoundException.byId(Book.class, bookID));
+
+        book.delete(LocalDateTime.now());
     }
 }

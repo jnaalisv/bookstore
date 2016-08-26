@@ -32,7 +32,7 @@ public class HibernateBookRepository implements BookRepository {
     @Override
     public Optional<Book> get(long bookID) {
         return getCurrentSession()
-                .createQuery("select b from Book b where b.id = :bookID", Book.class)
+                .createQuery("select b from Book b where b.id = :bookID and b.deleted is null", Book.class)
                 .setParameter("bookID", bookID)
                 .uniqueResultOptional();
     }
@@ -45,14 +45,14 @@ public class HibernateBookRepository implements BookRepository {
     @Override
     public List<Book> getAll() {
         return getCurrentSession()
-                .createQuery("select b from Book b", Book.class)
+                .createQuery("select b from Book b where b.deleted is null", Book.class)
                 .list();
     }
 
     @Override
     public List<Book> findBy(String title) {
          return getCurrentSession()
-                .createQuery("SELECT b FROM Book b where b.title like :title", Book.class)
+                .createQuery("SELECT b FROM Book b where b.title like :title and b.deleted is null", Book.class)
                 .setParameter("title", "%"+title + "%")
                 .list();
 

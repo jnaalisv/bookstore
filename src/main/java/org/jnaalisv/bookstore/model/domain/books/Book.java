@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "books")
@@ -22,6 +23,7 @@ public class Book {
     private String description;
     private BigDecimal price;
     private LocalDate published;
+    private LocalDateTime deleted;
 
     public Book() {}
 
@@ -55,5 +57,9 @@ public class Book {
 
     public LocalDate getPublished() {
         return published;
+    }
+
+    public void delete(LocalDateTime deleteTime) {
+        this.deleted = deleteTime;
     }
 }
