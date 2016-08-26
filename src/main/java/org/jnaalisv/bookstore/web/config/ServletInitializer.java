@@ -23,7 +23,7 @@ public class ServletInitializer extends AbstractAnnotationConfigDispatcherServle
 
     @Override
     protected String getServletName() {
-        return "Kona";
+        return "BookStoreServlet";
     }
 }
 

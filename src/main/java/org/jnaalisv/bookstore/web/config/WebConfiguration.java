@@ -13,7 +13,7 @@ import java.util.List;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan({"kona.web.interfaces"})
+@ComponentScan({"org.jnaalisv.bookstore.web.interfaces"})
 public class WebConfiguration extends WebMvcConfigurerAdapter {
 
     @Override

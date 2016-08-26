@@ -26,7 +26,7 @@ public class HibernateBookRepository implements BookRepository {
 
     @Override
     public void add(Book book) {
-
+        getCurrentSession().save(book);
     }
 
     @Override
@@ -44,39 +44,17 @@ public class HibernateBookRepository implements BookRepository {
 
     @Override
     public List<Book> getAll() {
-        return null;
+        return getCurrentSession()
+                .createQuery("select b from Book b", Book.class)
+                .list();
     }
 
     @Override
     public List<Book> findBy(String title) {
-        return null;
-    }
+         return getCurrentSession()
+                .createQuery("SELECT b FROM Book b where b.title like :title", Book.class)
+                .setParameter("title", "%"+title + "%")
+                .list();
 
-//    @Override
-//    public void add(Customer customer) {
-//        getCurrentSession().save(customer);
-//    }
-//
-//    @Override
-//    public Optional<Customer> get(long id) {
-//        return getCurrentSession()
-//                .createQuery("select c from Customer c where c.id = :id", Customer.class)
-//                .setParameter("id", id)
-//                .uniqueResultOptional();
-//    }
-//
-//    @Override
-//    public List<Customer> getAll() {
-//        return getCurrentSession()
-//                .createQuery("select c from Customer c", Customer.class)
-//                .list();
-//    }
-//
-//    @Override
-//    public List<Customer> findByName(String name) {
-//        return getCurrentSession()
-//                .createQuery("SELECT c FROM Customer c where c.name like :name", Customer.class)
-//                .setParameter("name", "%"+name + "%")
-//                .list();
-//    }
+    }
 }

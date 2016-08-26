@@ -2,6 +2,7 @@ package org.jnaalisv.bookstore.web.interfaces.books;
 
 import org.jnaalisv.bookstore.model.application.BookService;
 import org.jnaalisv.bookstore.model.domain.books.Book;
+import org.jnaalisv.bookstore.web.interfaces.BookstoreWebResources;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -18,7 +19,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("addresses")
+@RequestMapping(BookstoreWebResources.BOOKS)
 public class BooksController {
 
     private BookService bookService;
