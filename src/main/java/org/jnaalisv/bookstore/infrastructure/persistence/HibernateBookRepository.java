@@ -57,4 +57,9 @@ public class HibernateBookRepository implements BookRepository {
                 .list();
 
     }
+
+    @Override
+    public void update(Book aBook) {
+        getCurrentSession().update(aBook);
+    }
 }

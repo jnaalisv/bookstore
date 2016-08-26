@@ -44,4 +44,9 @@ public class BookService {
 
         book.delete(LocalDateTime.now());
     }
+
+    @Transactional
+    public void update(Book aBook) {
+        bookRepository.update(aBook);
+    }
 }

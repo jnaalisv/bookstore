@@ -13,4 +13,7 @@ public interface BookRepository {
     List<Book> getAll();
 
     List<Book> findBy(String title);
+
+    void update(Book aBook);
+
 }

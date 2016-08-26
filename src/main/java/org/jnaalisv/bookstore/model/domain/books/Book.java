@@ -27,6 +27,15 @@ public class Book {
 
     public Book() {}
 
+    public Book(long id, String title, String author, String description, BigDecimal price, LocalDate published) {
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.description = description;
+        this.price = price;
+        this. published = published;
+    }
+
     public Book(String title, String author, String description, BigDecimal price, LocalDate published) {
         this.title = title;
         this.author = author;
